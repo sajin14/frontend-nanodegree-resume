@@ -39,7 +39,7 @@ var bio = {
         $("#header").prepend(formattedName);
         $("#main").append(internationalizeButton);
     }
-}
+};
 
 
 var work = {
@@ -65,7 +65,7 @@ var work = {
             $(".work-entry:last").append(FormattedworkDescription);
         }
     }
-}
+};
 
 
 var education = {
@@ -130,7 +130,7 @@ var education = {
         }
 
     }
-}
+};
 
 var projects = {
     project: [{
@@ -161,7 +161,7 @@ var projects = {
     }
 
 
-}
+};
 
 
 
@@ -185,7 +185,7 @@ projects.display();
 $("#mapDiv").append(googleMap);
 
 $('a').hover(function() {
-        $(this).css("text-decoration", "underline")
+        $(this).css("text-decoration", "underline");
     }, function() {
         $(this).css("text-decoration", "none");
     }
