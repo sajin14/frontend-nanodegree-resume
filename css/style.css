@@ -1,3 +1,6 @@
+@import url(http://weloveiconfonts.com/api/?family=zocial);
+
+
 body,
 div,
 ul,
@@ -218,4 +221,21 @@ span {
   .biopic {
     display: block;
   }
+}
+
+[class*="zocial-"]:before {
+  font-family: "zocial", sans-serif;
+}
+
+.zocial-facebook {
+  color: blue;
+}
+
+.zocial-googleplus {
+  color: red;
+}
+
+#footerContacts {
+  font-weight: bold;
+  width: 100%;
 }
