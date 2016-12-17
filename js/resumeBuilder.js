@@ -1,3 +1,5 @@
+var data = "%data%";
+//bio object
 var bio = {
     "name": "Sajin Kasim",
     "role": "Front End Web Developer",
@@ -9,54 +11,55 @@ var bio = {
         "location": "Kerala"
     },
 
-    "picture": "images/me.png",
-    "message": "Experienced Web developer",
+    "biopic": "images/me.png",
+    "welcomeMessage": "Experienced Web developer",
     "skills": ["HTML", "CSS", "JavaScript", "C++", "Java", "C#"],
 
     display: function() {
-        var formattedName = HTMLheaderName.replace("%data%", bio.name);
-        var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-        var formattedmobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-        var formattedemail = HTMLemail.replace("%data%", bio.contacts.email);
-        var formattedgithub = HTMLgithub.replace("%data%", bio.contacts.github);
-        var formattedtwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-        var formattedlocation = HTMLlocation.replace("%data%", bio.contacts.location);
-        var formattedbioPic = HTMLbioPic.replace("%data%", bio.picture);
-        var formattedwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.message);
+        var formattedName = HTMLheaderName.replace(data, bio.name);
+        var formattedRole = HTMLheaderRole.replace(data, bio.role);
+        var formattedmobile = HTMLmobile.replace(data, bio.contacts.mobile);
+        var formattedemail = HTMLemail.replace(data, bio.contacts.email);
+        var formattedgithub = HTMLgithub.replace(data, bio.contacts.github);
+        var formattedtwitter = HTMLtwitter.replace(data, bio.contacts.twitter);
+        var formattedlocation = HTMLlocation.replace(data, bio.contacts.location);
+        var formattedbioPic = HTMLbioPic.replace(data, bio.biopic);
+        var formattedwelcomeMsg = HTMLwelcomeMsg.replace(data, bio.welcomeMessage);
         $("#header").append(formattedbioPic);
         $("#header").append(formattedwelcomeMsg);
         $("#header").append(HTMLskillsStart);
         for (i = 0; i < bio.skills.length; i++) {
-            var formattedskills = HTMLskills.replace("%data%", bio.skills[i]);
+            var formattedskills = HTMLskills.replace(data, bio.skills[i]);
             $("#skills").append(formattedskills);
         }
-        $("#topContacts").prepend(formattedlocation);
-        $("#topContacts").prepend(formattedtwitter);
-        $("#topContacts").prepend(formattedgithub);
-        $("#topContacts").prepend(formattedemail);
-        $("#topContacts").prepend(formattedmobile);
+        $("#topContacts,#footerContacts").prepend(formattedlocation);
+        $("#topContacts,#footerContacts").prepend(formattedtwitter);
+        $("#topContacts,#footerContacts").prepend(formattedgithub);
+        $("#topContacts,#footerContacts").prepend(formattedemail);
+        $("#topContacts,#footerContacts").prepend(formattedmobile);
         $("#header").prepend(formattedRole);
         $("#header").prepend(formattedName);
         $("#main").append(internationalizeButton);
     }
 };
 
-
+//work object
 var work = {
     "jobs": [{
-        "name": "TransCube Language Services",
-        "Title": "project manager",
-        "year": "2012-2016",
+        "employer": "TransCube Language Services",
+        "title": "project manager",
         "location": "Trivandrum",
-        "desc": "The job includes interaction with the clients and assigning new project to the employees under me and delivery on time. "
+        "dates": "2012-2016",
+        "description": "The job includes interaction with the clients and assigning new project to the employees under me and delivery on time. "
     }],
+    //Display Function for work
     display: function() {
         for (i = 0; i < work.jobs.length; i++) {
-            var formattedworkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[i].name);
-            var formattedworkTitle = HTMLworkTitle.replace("%data%", work.jobs[i].Title);
-            var formattedworkDates = HTMLworkDates.replace("%data%", work.jobs[i].year);
-            var formattedworklocation = HTMLworkLocation.replace("%data%", work.jobs[i].location);
-            var FormattedworkDescription = HTMLworkDescription.replace("%data%", work.jobs[i].desc);
+            var formattedworkEmployer = HTMLworkEmployer.replace(data, work.jobs[i].employer);
+            var formattedworkTitle = HTMLworkTitle.replace(data, work.jobs[i].title);
+            var formattedworkDates = HTMLworkDates.replace(data, work.jobs[i].dates);
+            var formattedworklocation = HTMLworkLocation.replace(data, work.jobs[i].location);
+            var FormattedworkDescription = HTMLworkDescription.replace(data, work.jobs[i].description);
             var formattedEmployer = formattedworkEmployer + formattedworkTitle;
             $("#workExperience").append(HTMLworkStart);
             $(".work-entry:last").append(formattedEmployer);
@@ -67,22 +70,25 @@ var work = {
     }
 };
 
+//Education Object
 
 var education = {
     "schools": [{
             "name": "Mar Baselios College of Engineering and Technology",
             "degree": "B.tech",
             "location": "Trivandrum",
-            "year": "2012-2016",
-            "major": "Computer Science"
+            "dates": "2012-2016",
+            "majors": ["Computer Science"],
+            "url": "https://www.mbcet.ac.in"
         },
 
         {
             "name": "Crescent Central school",
             "degree": "12TH",
             "location": "Trivandrum",
-            "year": "2009-2011",
-            "major": "Computer Science"
+            "dates": "2009-2011",
+            "majors": ["Computer Science"],
+            "url": "https://www.ccs.ac.in"
         },
 
 
@@ -90,38 +96,42 @@ var education = {
             "name": "Crescent Central school",
             "degree": "10TH",
             "location": "Trivandrum",
-            "year": "2008-2009",
-            "major": "General"
+            "dates": "2008-2009",
+            "majors": ["General"],
+            "url": "https://www.ccs.ac.in"
         },
     ],
-    "online": [{
+    "onlineCourses": [{
         "title": "Front End Web Developer",
         "school": "Udacity",
-        "year": "2016",
+        "dates": "2016",
         "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001?v=fe1"
     }],
-
+    //Display function for eduction
     display: function() {
         for (i = 0; i < education.schools.length; i++) {
-            var formattedschoolName = HTMLschoolName.replace("%data%", education.schools[i].name);
-            var formattedschoolDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
-            var formattedschoolDates = HTMLschoolDates.replace("%data%", education.schools[i].year);
-            var formattedschoollocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
-            var formattedschoolMajor = HTMLschoolMajor.replace("%data%", education.schools[i].major);
+            var formattedschoolName = HTMLschoolName.replace(data, education.schools[i].name);
+            var formattedschoolDegree = HTMLschoolDegree.replace(data, education.schools[i].degree);
+            var formattedschoolDates = HTMLschoolDates.replace(data, education.schools[i].dates);
+            var formattedschoollocation = HTMLschoolLocation.replace(data, education.schools[i].location);
+            var formattedschoolURL = HTMLonlineURL.replace(data, education.schools[i].url);
             $("#education").append(HTMLschoolStart);
-            $(".education-entry:last").prepend(formattedschoolName);
+            $(".education-entry:last").append(formattedschoolName);
             $(".education-entry:last").append(formattedschoolDegree);
             $(".education-entry:last").append(formattedschoolDates);
             $(".education-entry:last").append(formattedschoollocation);
-            $(".education-entry:last").append(formattedschoolMajor);
+            for (j = 0; j < education.schools[i].majors.length; j++) {
+                var formattedschoolMajor = HTMLschoolMajor.replace(data, education.schools[i].majors[j]);
+                $(".education-entry:last").append(formattedschoolMajor);
+            }
+            $(".education-entry:last").append(formattedschoolURL);
         }
-
         $(".education-entry:last").append(HTMLonlineClasses);
-        for (i = 0; i < education.online.length; i++) {
-            var formattedonlineTitle = HTMLonlineTitle.replace("%data%", education.online[i].title);
-            var formattedonlineSchool = HTMLonlineSchool.replace("%data%", education.online[i].school);
-            var formattedonlineDates = HTMLonlineDates.replace("%data%", education.online[i].year);
-            var formattedonlineURL = HTMLonlineURL.replace("%data%", education.online[i].url);
+        for (i = 0; i < education.onlineCourses.length; i++) {
+            var formattedonlineTitle = HTMLonlineTitle.replace(data, education.onlineCourses[i].title);
+            var formattedonlineSchool = HTMLonlineSchool.replace(data, education.onlineCourses[i].school);
+            var formattedonlineDates = HTMLonlineDates.replace(data, education.onlineCourses[i].dates);
+            var formattedonlineURL = HTMLonlineURL.replace(data, education.onlineCourses[i].url);
             $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append(formattedonlineTitle);
             $(".education-entry:last").append(formattedonlineSchool);
@@ -132,31 +142,34 @@ var education = {
     }
 };
 
+//project object
+
 var projects = {
-    project: [{
+    projects: [{
         "title": "Animal Trading card",
-        "date": "2016",
-        "desc": "Created animal trading card using HTML and CSS",
-        "image": "images/card.jpg"
+        "dates": "2016",
+        "description": "Created animal trading card using HTML and CSS",
+        "images": ["images/card.jpg"]
     }, {
         "title": "Portfolio Site",
-        "date": "2016",
-        "desc": "Created a Portfolio website which uses responsive web design",
-        "image": "images/portfolio.jpg"
+        "dates": "2016",
+        "description": "Created a Portfolio website which uses responsive web design",
+        "images": ["images/portfolio.jpg"]
     }],
-
+    //Display function for project
     display: function() {
-        for (i = 0; i < projects.project.length; i++) {
-            var formattedprojectTitle = HTMLprojectTitle.replace("%data%", projects.project[i].title);
-            var formattedprojectDates = HTMLprojectDates.replace("%data%", projects.project[i].date);
-            var formattedprojectDescription = HTMLprojectDescription.replace("%data%", projects.project[i].desc);
-            var formattedprojectImage = HTMLprojectImage.replace("%data%", projects.project[i].image);
+        for (i = 0; i < projects.projects.length; i++) {
+            var formattedprojectTitle = HTMLprojectTitle.replace(data, projects.projects[i].title);
+            var formattedprojectDates = HTMLprojectDates.replace(data, projects.projects[i].dates);
+            var formattedprojectDescription = HTMLprojectDescription.replace(data, projects.projects[i].description);
             $("#projects").append(HTMLprojectStart);
             $(".project-entry:last").append(formattedprojectTitle);
             $(".project-entry:last").append(formattedprojectDates);
             $(".project-entry:last").append(formattedprojectDescription);
-            $(".project-entry:last").append(formattedprojectImage);
-
+            for (j = 0; j < projects.projects[i].images.length; j++) {
+                var formattedprojectImage = HTMLprojectImage.replace(data, projects.projects[i].images[j]);
+                $(".project-entry:last").append(formattedprojectImage);
+            }
         }
     }
 
@@ -165,7 +178,7 @@ var projects = {
 
 
 
-
+//Function for internationalizing name
 function inName(name) {
     name = name.trim().split(" ");
     console.log(name);
@@ -181,7 +194,7 @@ work.display();
 education.display();
 projects.display();
 
-
+//Adding Map to Resume
 $("#mapDiv").append(googleMap);
 
 $('a').hover(function() {
@@ -191,10 +204,13 @@ $('a').hover(function() {
     }
 
 );
-
+//Modifying CSS
 $('#projects img').css({
     'width': '300px',
     'max-height': '200px'
 });
-$('#footerContacts').append('<li class="zocial-facebook"><a href="https://www.facebook.com/sajin.kasim">Facebook</a></li>');
-$('#footerContacts').append('<li class="zocial-googleplus"><a href="https://plus.google.com/u/0/105823067968552772626">Google+</a> </li>');
+//manipulating DOM using jQuery
+$('#lets-connect').append('<ul class= "social flex-box"></ul>');
+$('.social').append('<li class="zocial-facebook"><a href="https://www.facebook.com/sajin.kasim">Facebook</a></li>');
+$('.social').append('<li class="zocial-googleplus"><a href="https://plus.google.com/u/0/105823067968552772626">Google+</a> </li>');
+$(".project-entry,.education-entry,.work-entry").prepend('<hr>');

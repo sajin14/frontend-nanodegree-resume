@@ -233,7 +233,7 @@ span {
     color: red;
 }
 
-#footerContacts {
-    font-weight: bold;
+.social {
     width: 100%;
+    font-weight: bold;
 }
